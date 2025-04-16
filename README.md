@@ -11,14 +11,14 @@ THE LIBRARY IS IN A VERY EARLY STAGE!!!
 
 Usage
 -----
-Installation: `go get github.com/bsphere/zerorpc`
+Installation: `go get github.com/laurencecwj/zerorpc`
 
 ```go
 package main
 
 import (
 	"fmt"
-	"github.com/bsphere/zerorpc"
+	"ai.c12/zerorpc/zerorpc"
 )
 
 func main() {
@@ -47,7 +47,7 @@ package main
 
 import (
     "fmt"
-    "github.com/bsphere/zerorpc"
+    "ai.c12/zerorpc/zerorpc"
 )
 
 func main() {
@@ -85,7 +85,7 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github.com/bsphere/zerorpc"
+	"ai.c12/zerorpc/zerorpc"
 	"time"
 )
 
