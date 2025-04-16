@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"ai.c12/zerorpc/zerorpc"
+	"github.com/laurencecwj/zerorpc/zerorpc"
 )
 
 func main() {

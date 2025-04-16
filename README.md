@@ -18,7 +18,7 @@ package main
 
 import (
 	"fmt"
-	"ai.c12/zerorpc/zerorpc"
+	"github.com/laurencecwj/zerorpc/zerorpc"
 )
 
 func main() {
@@ -47,7 +47,7 @@ package main
 
 import (
     "fmt"
-    "ai.c12/zerorpc/zerorpc"
+    "github.com/laurencecwj/zerorpc/zerorpc"
 )
 
 func main() {
@@ -85,7 +85,7 @@ package main
 import (
 	"errors"
 	"fmt"
-	"ai.c12/zerorpc/zerorpc"
+	"github.com/laurencecwj/zerorpc/zerorpc"
 	"time"
 )
 

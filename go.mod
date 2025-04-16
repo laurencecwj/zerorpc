@@ -1,4 +1,4 @@
-module ai.c12/zerorpc
+module github.com/laurencecwj/zerorpc
 
 go 1.23.4
 
