@@ -20,7 +20,7 @@ func main() {
 	}
 	fmt.Println(response)
 
-	_loop := 10000
+	_loop := 1
 	ts := time.Now()
 	for range _loop {
 		_, err := c.Invoke("hello", "John")

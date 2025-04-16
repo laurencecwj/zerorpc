@@ -101,6 +101,9 @@ func (s *socket) sendEvent(e *Event, identity string) error {
 	if err != nil {
 		return err
 	}
+	// _d, _ := json.Marshal(e)
+	// os.WriteFile("./dbg_input.json", _d, os.FileMode.Perm(0666))
+	// os.WriteFile("./dbg_input.dat", b, os.FileMode.Perm(0666))
 
 	// log.Printf("ZeroRPC socket sent event %s", e.Header["message_id"].(string))
 

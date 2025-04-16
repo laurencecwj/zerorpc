@@ -2,6 +2,7 @@ package zerorpc
 
 import (
 	"errors"
+
 	uuid "github.com/nu7hatch/gouuid"
 	"github.com/ugorji/go/codec"
 )
@@ -69,6 +70,7 @@ func unPackBytes(b []byte) (*Event, error) {
 		return nil, err
 	}
 
+	// os.WriteFile("/tmp/resp.dat", b, os.FileMode.Perm(0666))
 	// get the event headers
 	h, ok := v.([]interface{})[0].(map[interface{}]interface{})
 	if !ok {
