@@ -2,7 +2,6 @@ package zerorpc
 
 import (
 	"errors"
-	"log"
 )
 
 // ZeroRPC client representation,
@@ -77,7 +76,7 @@ The client sends heartbeat events every 5 seconds, if twp heartbeat events are m
 the remote is considered as lost and an ErrLostRemote is returned.
 */
 func (c *Client) Invoke(name string, args ...interface{}) (*Event, error) {
-	log.Printf("ZeroRPC client invoked %s with args %s", name, args)
+	// log.Printf("ZeroRPC client invoked %s with args %s", name, args)
 
 	ev, err := newEvent(name, args)
 	if err != nil {
@@ -156,7 +155,7 @@ The client sends heartbeat events every 5 seconds, if twp heartbeat events are m
 the remote is considered as lost and an ErrLostRemote is returned.
 */
 func (c *Client) InvokeStream(name string, args ...interface{}) (chan *Event, error) {
-	log.Printf("ZeroRPC client invoked %s with args %s in streaming mode", name, args)
+	// log.Printf("ZeroRPC client invoked %s with args %s in streaming mode", name, args)
 
 	ev, err := newEvent(name, args)
 	if err != nil {

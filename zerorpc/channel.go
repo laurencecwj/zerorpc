@@ -66,7 +66,7 @@ func (s *socket) newChannel(id string) *channel {
 
 	s.Channels = append(s.Channels, &c)
 
-	log.Printf("ZeroRPC socket created new channel %s", c.Id)
+	// log.Printf("ZeroRPC socket created new channel %s", c.Id)
 
 	return &c
 }
@@ -89,7 +89,7 @@ func (ch *channel) close() {
 	close(ch.channelOutput)
 	close(ch.channelErrors)
 
-	log.Printf("Channel %s closed", ch.Id)
+	// log.Printf("Channel %s closed", ch.Id)
 }
 
 // Sends an event on the channel,
@@ -111,7 +111,7 @@ func (ch *channel) sendEvent(e *Event) error {
 		go ch.sendHeartbeats()
 	}
 
-	log.Printf("Channel %s sending event %s", ch.Id, e.Header["message_id"].(string))
+	// log.Printf("Channel %s sending event %s", ch.Id, e.Header["message_id"].(string))
 
 	identity := ch.identity
 
@@ -155,7 +155,7 @@ func (ch *channel) sendHeartbeats() {
 			return
 		}
 
-		log.Printf("Channel %s sent heartbeat", ch.Id)
+		// log.Printf("Channel %s sent heartbeat", ch.Id)
 	}
 }
 
@@ -202,7 +202,7 @@ func (ch *channel) listen() {
 			streamCounter = 0
 
 		case "_zpc_hb":
-			log.Printf("Channel %s received heartbeat", ch.Id)
+			// log.Printf("Channel %s received heartbeat", ch.Id)
 			ch.lastHeartbeat = time.Now()
 
 		default:
@@ -210,7 +210,7 @@ func (ch *channel) listen() {
 				continue
 			}
 
-			log.Printf("Channel %s handling task %s with args %s", ch.Id, ev.Name, ev.Args)
+			// log.Printf("Channel %s handling task %s with args %s", ch.Id, ev.Name, ev.Args)
 			go func(ch *channel, ev *Event) {
 				defer ch.close()
 				defer ch.socket.removeChannel(ch)
@@ -218,7 +218,7 @@ func (ch *channel) listen() {
 				r, err := ch.socket.server.handleTask(ev)
 				if err == nil {
 					if e, err := newEvent("OK", []interface{}{r}); err != nil {
-						log.Printf("zerorpc/channel %s", err.Error())
+						// log.Printf("zerorpc/channel %s", err.Error())
 					} else {
 						e := ch.sendEvent(e)
 						if e != nil {
@@ -232,7 +232,7 @@ func (ch *channel) listen() {
 							ch.socket.socketErrors <- e
 						}
 					} else {
-						log.Printf("zerorpc/channel %s", err.Error())
+						// log.Printf("zerorpc/channel %s", err.Error())
 					}
 				}
 			}(ch, ev)
@@ -247,7 +247,7 @@ func (ch *channel) handleHeartbeats() {
 		}
 
 		if time.Since(ch.lastHeartbeat) > 2*HeartbeatFrequency {
-			log.Printf("ZeroRPC channel %s lost two heartbeat events", ch.Id)
+			// log.Printf("ZeroRPC channel %s lost two heartbeat events", ch.Id)
 
 			select {
 			case ch.channelErrors <- ErrLostRemote:
